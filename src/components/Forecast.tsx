@@ -14,6 +14,11 @@ type Props = {
   data: forecastType
 }
 
+// Function to handle page refresh
+const handleRefresh = () => {
+  window.location.reload()
+}
+
 const Degree = ({ temp }: { temp: number }): JSX.Element => (
   <span>
     {temp}
@@ -29,23 +34,54 @@ const Forecast = ({ data }: Props): JSX.Element => {
       className="w-full md:max-w-[500px] py-0 md:py-4 md:px-10 lg:px-24 h-auto
       bg-white bg-opacity-20 backdrop-blur-lg rounded lg:rounded-3xl drop-shadow-lg"
     >
-      <div className="mx-auto w-[300px] m-10">
+      <div className="mx-auto w-[300px] m-8">
         <section className="text-center">
-          <h2 className="text-3xl font-black">
-            {data.name}
-            <span className="font-thin"> {data.country}</span>
-          </h2>
-          <h1 className="text-4xl font-extrabold">
-            <Degree temp={Math.round(today.main.temp)} />
-          </h1>
-          <p className="text-sm lg:text-base">
-            {today.weather[0].main} {today.weather[0].description}
-          </p>
-          <p className="text-sm lg:text-base">
-            H: <Degree temp={Math.ceil(today.main.temp_max)} /> L:{' '}
-            <Degree temp={Math.floor(today.main.temp_min)} />
-          </p>
+          {/* Flex container for the arrow and city name */}
+          <div className="flex items-center justify-center">
+            {/* Arrow Button */}
+            <button
+              onClick={handleRefresh}
+              className="absolute left-8 lg:left-12 text-white hover:text-black font-bold
+        py-2 rounded-xl text-sm ease-in-out duration-300"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                className="h-8"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </button>
+
+            {/* City Name */}
+            <h2 className="text-3xl font-black mx-3">
+              {data.name}
+              <span className="font-thin"> {data.country}</span>
+            </h2>
+          </div>
+
+          {/* Temperature and Weather Details */}
+          <div className="text-center">
+            <h1 className="text-4xl font-extrabold">
+              <Degree temp={Math.round(today.main.temp)} />
+            </h1>
+            <p className="text-sm lg:text-base">
+              {today.weather[0].main} {today.weather[0].description}
+            </p>
+            <p className="text-sm lg:text-base">
+              H: <Degree temp={Math.ceil(today.main.temp_max)} /> L:{' '}
+              <Degree temp={Math.floor(today.main.temp_min)} />
+            </p>
+          </div>
         </section>
+
         <section className="flex overflow-x-auto mt-4 pb-2 mb-5 -mx-9 lg:-mx-5 scroll-smooth scrollbar-hide">
           {data.list.map((item, i) => (
             <div
