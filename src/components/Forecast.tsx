@@ -29,7 +29,7 @@ const Forecast = ({ data }: Props): JSX.Element => {
       className="w-full md:max-w-[500px] py-0 md:py-4 md:px-10 lg:px-24 h-auto
       bg-white bg-opacity-20 backdrop-blur-lg rounded lg:rounded-3xl drop-shadow-lg"
     >
-      <div className="mx-auto w-[300px] m-8">
+      <div className="mx-auto w-[300px] m-10">
         <section className="text-center">
           <h2 className="text-3xl font-black">
             {data.name}
@@ -46,10 +46,10 @@ const Forecast = ({ data }: Props): JSX.Element => {
             <Degree temp={Math.floor(today.main.temp_min)} />
           </p>
         </section>
-        <section className="flex overflow-x-scroll mt-4 pb-2 mb-5">
+        <section className="flex overflow-x-auto mt-4 pb-2 mb-5 -mx-9 lg:-mx-5 scroll-smooth scrollbar-hide">
           {data.list.map((item, i) => (
             <div
-              className="inline-block text-center w-[50px] flex-shrink-0"
+              className="inline-block text-center w-[60px] lg:w-[70px] flex-shrink-0"
               key={i}
             >
               <p className="text-sm lg:text-lg">
@@ -68,14 +68,14 @@ const Forecast = ({ data }: Props): JSX.Element => {
 
         <section className="flex flex-wrap justify-between text-zinc-700">
           <div
-            className="w-[140px] text-xs lg:text-base font-bold flex flex-col items-center bg-white/20 
-        backdrop-blur-xl rounded-xl drop-shadow-xl py-4 mb-2 lg:mb-5"
+            className="w-[165px] text-xs lg:text-base font-bold flex flex-col items-center bg-white/20 
+        backdrop-blur-xl rounded-xl drop-shadow-xl py-4 mb-2 lg:mb-5 -mx-5"
           >
             <Sunrise /> <span className="mt-2">{getSunTime(data.sunrise)}</span>
           </div>
           <div
-            className="w-[140px] text-xs lg:text-base font-bold flex flex-col items-center bg-white/20 
-        backdrop-blur-xl rounded-xl drop-shadow-xl py-4 mb-2 lg:mb-5"
+            className="w-[165px] text-xs lg:text-base font-bold flex flex-col items-center bg-white/20 
+        backdrop-blur-xl rounded-xl drop-shadow-xl py-4 mb-2 lg:mb-5 -mx-5"
           >
             <Sunset /> <span className="mt-2">{getSunTime(data.sunset)}</span>
           </div>
