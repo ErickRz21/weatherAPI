@@ -24,23 +24,24 @@ const Degree = ({ temp }: { temp: number }): JSX.Element => (
 const Forecast = ({ data }: Props): JSX.Element => {
   const today = data.list[0]
   return (
+    // Background container
     <div
-      className="w-full md:max-w-[500px] py-4 md:py-4 md:px-10 lg:px-24 h-auto
-     lg:h-auto bg-white bg-opacity-20 backdrop-blur-lg rounded drop-shadow-lg"
+      className="w-full md:max-w-[500px] py-0 md:py-4 md:px-10 lg:px-24 h-auto
+      bg-white bg-opacity-20 backdrop-blur-lg rounded lg:rounded-3xl drop-shadow-lg"
     >
-      <div className="mx-auto w-[300px] m-10 ">
+      <div className="mx-auto w-[300px] m-8">
         <section className="text-center">
-          <h2 className="text-2xl font-black">
+          <h2 className="text-3xl font-black">
             {data.name}
             <span className="font-thin"> {data.country}</span>
           </h2>
           <h1 className="text-4xl font-extrabold">
             <Degree temp={Math.round(today.main.temp)} />
           </h1>
-          <p className="text-sm">
+          <p className="text-sm lg:text-base">
             {today.weather[0].main} {today.weather[0].description}
           </p>
-          <p className="text-sm">
+          <p className="text-sm lg:text-base">
             H: <Degree temp={Math.ceil(today.main.temp_max)} /> L:{' '}
             <Degree temp={Math.floor(today.main.temp_min)} />
           </p>
@@ -51,7 +52,7 @@ const Forecast = ({ data }: Props): JSX.Element => {
               className="inline-block text-center w-[50px] flex-shrink-0"
               key={i}
             >
-              <p className="text-sm">
+              <p className="text-sm lg:text-lg">
                 {i === 0 ? 'Now' : new Date(item.dt * 1000).getHours()}
               </p>
               <img
@@ -67,14 +68,14 @@ const Forecast = ({ data }: Props): JSX.Element => {
 
         <section className="flex flex-wrap justify-between text-zinc-700">
           <div
-            className="w-[140px] text-xs font-bold flex flex-col items-center bg-white/20 
-        backdrop-blur-lg rounded drop-shadow-lg py-4 mb-5"
+            className="w-[140px] text-xs lg:text-base font-bold flex flex-col items-center bg-white/20 
+        backdrop-blur-xl rounded-xl drop-shadow-xl py-4 mb-2 lg:mb-5"
           >
             <Sunrise /> <span className="mt-2">{getSunTime(data.sunrise)}</span>
           </div>
           <div
-            className="w-[140px] text-xs font-bold flex flex-col items-center bg-white/20 
-        backdrop-blur-lg rounded drop-shadow-lg py-4 mb-5"
+            className="w-[140px] text-xs lg:text-base font-bold flex flex-col items-center bg-white/20 
+        backdrop-blur-xl rounded-xl drop-shadow-xl py-4 mb-2 lg:mb-5"
           >
             <Sunset /> <span className="mt-2">{getSunTime(data.sunset)}</span>
           </div>
