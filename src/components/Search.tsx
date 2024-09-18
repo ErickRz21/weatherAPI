@@ -25,15 +25,15 @@ const Search = ({
         <h1 className="text-4xl font-thin">
           Weather <span className="font-black">Forecast</span>
         </h1>
-        <p className="text-sm mt-2">
+        <p className="text-sm lg:text-base mt-2">
           Enter a city name to get the weather forecast
         </p>
 
-        <div className="relative flex mt-10 md:mt-4 ">
+        <div className="relative flex mt-5 ">
           <input
             type="text"
             value={term}
-            className="px-2 py-1 rounded-1-md border-2 border-white"
+            className="px-2 py-1 rounded-1-md border-2 border-white text-sm lg:text-base"
             onChange={onInputChange}
           />
 
@@ -41,7 +41,7 @@ const Search = ({
             {options.map((option: optionType, index: number) => (
               <li key={option.name + '-' + index}>
                 <button
-                  className="text-left text-sm w-full hover:bg-zinc-700 hover:text-white px-2 py-1 cursor-pointer"
+                  className="text-left text-sm lg:text-base w-full hover:bg-zinc-700 hover:text-white px-2 py-1 cursor-pointer"
                   onClick={() => onOptionSelect(option)}
                 >
                   {option.name}, {option.country}
