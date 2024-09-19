@@ -16,7 +16,6 @@ const useForecast = () => {
     }
   }
 
-  const [error, setError] = useState<string | null>(null)
   const getSearchOptions = (value: string) => {
     fetch(
       `https://api.openweathermap.org/geo/1.0/direct?q=${value.trim()}&limit=5&appid=${
@@ -25,10 +24,7 @@ const useForecast = () => {
     )
       .then((res) => res.json())
       .then((data) => setOptions(data))
-      .catch((e) => {
-      setError('Unable to fetch search options')
-      console.log(e)
-    })
+      .catch((e) => console.log(e))
   }
 
   const debouncedGetSearchOptions = debounce(getSearchOptions, 500)
