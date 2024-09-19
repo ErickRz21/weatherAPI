@@ -31,10 +31,10 @@ const Forecast = ({ data }: Props): JSX.Element => {
   return (
     // Background container
     <div
-      className="w-full md:max-w-[500px] py-0 md:py-4 md:px-10 lg:px-24 h-screen lg:h-[950px]
-      bg-white bg-opacity-20 backdrop-blur-lg rounded lg:rounded-3xl drop-shadow-lg"
+      className="w-full md:max-w-[500px] py-0 md:py-4 md:px-10 lg:px-24 h-screen lg:h-[900px]
+      bg-white bg-opacity-20 backdrop-blur-lg rounded lg:rounded-3xl drop-shadow-lg overflow-y-hidden"
     >
-      <div className="mx-auto w-[300px] m-8">
+      <div className="mx-auto w-[300px] m-8 lg:m-2">
         <section className="text-center">
           {/* Flex container for the arrow and city name */}
           <div className="flex items-center justify-center">
