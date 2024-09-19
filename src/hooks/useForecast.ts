@@ -3,6 +3,7 @@ import { useState, useEffect, ChangeEvent } from 'react'
 import { optionType, forecastType } from './../types'
 
 const useForecast = () => {
+  const [loading, setLoading] = useState<boolean>(false);
   const [term, setTerm] = useState<string>('')
   const [city, setCity] = useState<optionType | null>(null)
   const [options, setOptions] = useState<[]>([])
@@ -23,8 +24,12 @@ const useForecast = () => {
       }`
     )
       .then((res) => res.json())
-      .then((data) => setOptions(data))
-      .catch((e) => console.log(e))
+      .then((data) => {
+        setOptions(data)
+      })
+      .catch((e) => {
+        console.log(e)
+      })
   }
 
   const debouncedGetSearchOptions = debounce(getSearchOptions, 500)
@@ -39,6 +44,7 @@ const useForecast = () => {
   }
 
   const getForecast = (city: optionType) => {
+    setLoading(true)
     fetch(
       `https://api.openweathermap.org/data/2.5/forecast?lat=${city.lat}&lon=${city.lon}&units=metric&appid=${process.env.REACT_APP_API_KEY}`
     )
@@ -49,8 +55,11 @@ const useForecast = () => {
           list: data.list.slice(0, 16),
         }
         setForecast(forecastData)
-      }).catch((e) => console.log(e)
-    )
+        setLoading(false)
+      }).catch((e) => {
+        console.log(e)
+        setLoading(false) // Stop loading in case of an error
+      });
   }
 
   const onSubmit = () => {
@@ -73,6 +82,7 @@ const useForecast = () => {
     term,
     options,
     forecast,
+    loading,
     onInputChange,
     onOptionSelect,
     onSubmit,
