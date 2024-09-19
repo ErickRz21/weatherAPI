@@ -31,7 +31,7 @@ const Forecast = ({ data }: Props): JSX.Element => {
   return (
     // Background container
     <div
-      className="w-full md:max-w-[500px] py-0 md:py-4 md:px-10 lg:px-24 h-auto
+      className="w-full md:max-w-[500px] py-0 md:py-4 md:px-10 lg:px-24 h-screen lg:h-auto
       bg-white bg-opacity-20 backdrop-blur-lg rounded lg:rounded-3xl drop-shadow-lg"
     >
       <div className="mx-auto w-[300px] m-8">
