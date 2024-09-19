@@ -8,6 +8,15 @@ const useForecast = () => {
   const [options, setOptions] = useState<[]>([])
   const [forecast, setForecast] = useState<forecastType | null>(null)
 
+  const debounce = (func: (...args: any) => void, delay: number) => {
+    let timeoutId: NodeJS.Timeout
+    return (...args: any) => {
+      clearTimeout(timeoutId)
+      timeoutId = setTimeout(() => func(...args), delay)
+    }
+  }
+
+  const [error, setError] = useState<string | null>(null)
   const getSearchOptions = (value: string) => {
     fetch(
       `https://api.openweathermap.org/geo/1.0/direct?q=${value.trim()}&limit=5&appid=${
@@ -15,8 +24,14 @@ const useForecast = () => {
       }`
     )
       .then((res) => res.json())
-      .then((data) => setOptions(data)).catch(e => console.log(e))
+      .then((data) => setOptions(data))
+      .catch((e) => {
+      setError('Unable to fetch search options')
+      console.log(e)
+    })
   }
+
+  const debouncedGetSearchOptions = debounce(getSearchOptions, 500)
 
   const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
@@ -24,7 +39,7 @@ const useForecast = () => {
 
     if (value.trim() === '') return
 
-    getSearchOptions(value)
+    debouncedGetSearchOptions(value)
   }
 
   const getForecast = (city: optionType) => {
@@ -34,17 +49,16 @@ const useForecast = () => {
       .then((res) => res.json())
       .then((data) => {
         const forecastData = {
-            ...data.city,
-            list: data.list.slice(0, 16),
+          ...data.city,
+          list: data.list.slice(0, 16),
         }
         setForecast(forecastData)
-      }).catch(e => console.log(e)
-    ) 
+      }).catch((e) => console.log(e)
+    )
   }
 
   const onSubmit = () => {
     if (!city) return
-
     getForecast(city)
   }
 
