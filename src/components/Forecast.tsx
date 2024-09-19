@@ -32,7 +32,7 @@ const Forecast = ({ data }: Props): JSX.Element => {
     // Background container
     <div
       className="w-full md:max-w-[500px] py-0 md:py-4 md:px-10 lg:px-24 h-screen lg:h-[900px]
-      bg-white bg-opacity-20 backdrop-blur-lg rounded lg:rounded-3xl drop-shadow-lg"
+      bg-white bg-opacity-20 lg:backdrop-blur-sm rounded lg:rounded-3xl lg:drop-shadow-sm"
     >
       <div className="mx-auto w-[300px] m-8 lg:m-2">
         <section className="text-center">
@@ -42,7 +42,7 @@ const Forecast = ({ data }: Props): JSX.Element => {
             <button
               onClick={handleRefresh}
               className="absolute left-8 lg:left-12 text-white hover:text-black font-bold
-        py-2 rounded-xl text-sm ease-in-out duration-300"
+        py-2 rounded-xl text-sm ease-in-out duration-300 cursor-pointer"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -105,13 +105,13 @@ const Forecast = ({ data }: Props): JSX.Element => {
         <section className="flex flex-wrap justify-between text-zinc-700">
           <div
             className="w-[165px] text-xs lg:text-base font-bold flex flex-col items-center bg-white/20 
-        backdrop-blur-xl rounded-xl drop-shadow-xl py-4 mb-2 lg:mb-5 -mx-5 lg:-mx-6"
+        lg:backdrop-blur-sm rounded-xl lg:drop-shadow-sm py-4 mb-2 lg:mb-5 -mx-5 lg:-mx-6 shadow"
           >
             <Sunrise /> <span className="mt-2">{getSunTime(data.sunrise)}</span>
           </div>
           <div
             className="w-[165px] text-xs lg:text-base font-bold flex flex-col items-center bg-white/20 
-        backdrop-blur-xl rounded-xl drop-shadow-xl py-4 mb-2 lg:mb-5 -mx-5 lg:-mx-6"
+        lg:backdrop-blur-sm rounded-xl lg:drop-shadow-sm py-4 mb-2 lg:mb-5 -mx-5 lg:-mx-6 shadow"
           >
             <Sunset /> <span className="mt-2">{getSunTime(data.sunset)}</span>
           </div>

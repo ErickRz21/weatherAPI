@@ -26,8 +26,8 @@ const Tile = React.memo(({ icon, title, info, description }: Props): JSX.Element
   const Icon = icons[icon]
   return (
     <article
-      className="w-[165px] h-auto text-zinc-700 bg-white/20 backdrop-blur-lg
-     rounded-xl drop-shadow-lg p-4 mb-2 lg:mb-5 -mx-5 lg:-mx-6 flex flex-col justify-between"
+      className="w-[165px] h-auto text-zinc-700 bg-white/20 lg:backdrop-blur-sm
+     rounded-xl lg:drop-shadow-sm p-4 mb-2 lg:mb-5 -mx-5 lg:-mx-6 flex flex-col justify-between shadow"
     >
       <div className="flex items-center text-sm lg:text-lg font-bold">
         <Icon /> <h4 className="ml-1">{title}</h4>
