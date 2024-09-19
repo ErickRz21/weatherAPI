@@ -31,7 +31,7 @@ const Forecast = ({ data }: Props): JSX.Element => {
   return (
     // Background container
     <div
-      className="w-full md:max-w-[500px] py-0 md:py-4 md:px-10 lg:px-24 h-screen lg:h-auto
+      className="w-full md:max-w-[500px] py-0 md:py-4 md:px-10 lg:px-24 h-screen lg:h-[950px]
       bg-white bg-opacity-20 backdrop-blur-lg rounded lg:rounded-3xl drop-shadow-lg"
     >
       <div className="mx-auto w-[300px] m-8">
@@ -105,13 +105,13 @@ const Forecast = ({ data }: Props): JSX.Element => {
         <section className="flex flex-wrap justify-between text-zinc-700">
           <div
             className="w-[165px] text-xs lg:text-base font-bold flex flex-col items-center bg-white/20 
-        backdrop-blur-xl rounded-xl drop-shadow-xl py-4 mb-2 lg:mb-5 -mx-5"
+        backdrop-blur-xl rounded-xl drop-shadow-xl py-4 mb-2 lg:mb-5 -mx-5 lg:-mx-6"
           >
             <Sunrise /> <span className="mt-2">{getSunTime(data.sunrise)}</span>
           </div>
           <div
             className="w-[165px] text-xs lg:text-base font-bold flex flex-col items-center bg-white/20 
-        backdrop-blur-xl rounded-xl drop-shadow-xl py-4 mb-2 lg:mb-5 -mx-5"
+        backdrop-blur-xl rounded-xl drop-shadow-xl py-4 mb-2 lg:mb-5 -mx-5 lg:-mx-6"
           >
             <Sunset /> <span className="mt-2">{getSunTime(data.sunset)}</span>
           </div>
