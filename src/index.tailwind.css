@@ -8,5 +8,5 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  @apply bg-cyan-400/70 m-0 p-0;
+  @apply dark:bg-gray-950/90;
 }
