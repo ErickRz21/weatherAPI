@@ -82,10 +82,10 @@ const Forecast = ({ data }: Props): JSX.Element => {
           </div>
         </section>
 
-        <section className="flex overflow-x-auto mt-4 pb-2 mb-5 -mx-9 lg:-mx-5 scroll-smooth scrollbar-hide">
+        <section className="flex overflow-x-auto mt-4 pb-2 mb-5 -mx-10 lg:-mx-5 scroll-smooth scrollbar-hide">
           {data.list.map((item, i) => (
             <div
-              className="inline-block text-center w-[60px] lg:w-[70px] flex-shrink-0"
+              className="inline-block text-center w-[65px] lg:w-[70px] flex-shrink-0"
               key={i}
             >
               <p className="text-sm lg:text-lg">
