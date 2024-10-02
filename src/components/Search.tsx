@@ -33,11 +33,12 @@ const Search = ({
           <input
             type="text"
             value={term}
-            className="px-2 py-1 border-2 border-white text-sm lg:text-base rounded-l-lg"
+            className="px-2 py-1 border-2 dark:bg-zinc-800 dark:text-zinc-300 border-white dark:border-zinc-800
+             text-sm lg:text-base rounded-l-lg"
             onChange={onInputChange}
           />
 
-          <ul className="absolute top-9 bg-white ml-1 rounded-b-lg ">
+          <ul className="absolute top-9 bg-white dark:bg-zinc-800 dark:text-zinc-300 ml-1 rounded-b-lg ">
             {options.map((option: optionType, index: number) => (
               <li key={option.name + '-' + index}>
                 <button
@@ -51,8 +52,8 @@ const Search = ({
           </ul>
 
           <button
-            className="rounded-r-lg border-2 border-zinc-100 hover:border-zinc-500
-         hover:text-zinc-500 text-zinc-100 px-2 py-1 cursor-pointer duration-300 ease-linear"
+            className="rounded-r-lg border-2 border-zinc-100 dark:border-zinc-800 hover:border-zinc-500
+         hover:text-zinc-500 text-zinc-100 dark:text-zinc-800 px-2 py-1 cursor-pointer duration-300 ease-linear"
             onClick={onSubmit}
           >
             Search
